@@ -1,15 +1,57 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import {
+	RouterProvider,
+	createBrowserRouter,
+	createRoutesFromElements,
+	Route,
+} from "react-router-dom";
+import Inicio from "./pages/shared/inicio";
+import Sobre from "./pages/shared/sobre";
+import Contato from "./pages/shared/contato";
+import Layout from "./components/template/Layout";
+
+// const router = createBrowserRouter([
+// 	{
+// 		path: "/",
+// 		element: <Layout />,
+// 		children: [
+// 			{ index: true, element: <Inicio /> },
+// 			{ path: "inicio", element: <Inicio /> },
+// 			{ path: "", element: <Inicio /> },
+// 			{
+// 				path: "info",
+// 				children: [
+// 					{ path: "sobre", element: <Sobre /> },
+// 					{ path: "contato", element: <Contato /> },
+// 				],
+// 			},
+// 		],
+// 	},
+// ]);
+
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path="/" element={<Layout />}>
+			<Route index element={<Inicio />} />
+			<Route path="inicio" element={<Inicio />} />
+			<Route path="info">
+				<Route path="sobre" element={<Sobre />} />
+				<Route path="contato" element={<Contato />} />
+			</Route>
+		</Route>
+	)
+);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+	document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-  
-  </React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
