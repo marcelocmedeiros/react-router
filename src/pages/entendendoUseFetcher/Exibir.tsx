@@ -1,4 +1,4 @@
-import { useActionData, useLocation } from "react-router";
+import { useActionData } from "react-router";
 import Pagina from "../../components/template/Pagina";
 
 export default function Exibir() {
@@ -18,6 +18,7 @@ export default function Exibir() {
 }
 
 export async function actionFormulario({ request }) {
+	// window.alert("Olá");
 	const dadosFormulario = await request.formData();
 	const dadosParaSalvar = {
 		nome: dadosFormulario.get("nome"),

@@ -11,7 +11,8 @@ export default function Formulario() {
 	// console.log(fetcher);
 
 	useEffect(() => {
-		if (state === "loading" && data) {
+		// Em vez de colocar state === "loading" coloquei state === "idle" e funcionou
+		if (state === "idle" && data) {
 			window.alert(`${data.nome} tem ${data.idade} anos`);
 		}
 	}, [data, state]);
